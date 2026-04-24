@@ -1,0 +1,22 @@
+{
+  "name": "process-definition-quality-gate",
+  "version": "0.1.0",
+  "description": "TypeScript quality gate for validating, simulating, and documenting process automation definitions",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/cli.ts validate fixtures/definitions/grid-connection-request.json",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "generate:samples": "tsx src/cli.ts validate fixtures/definitions/grid-connection-request.json --report reports/validation-report.md && tsx src/cli.ts simulate fixtures/definitions/grid-connection-request.json --input fixtures/inputs/high-capacity.json --out reports/high-capacity-path.json && tsx src/cli.ts generate-docs fixtures/definitions/grid-connection-request.json --out docs/generated/grid-connection-request.md"
+  },
+  "dependencies": {
+    "zod": "^3.25.42"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.8",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
+

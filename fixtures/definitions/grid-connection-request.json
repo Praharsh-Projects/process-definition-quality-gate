@@ -1,0 +1,37 @@
+{
+  "key": "grid-connection-request",
+  "name": "Grid Connection Request",
+  "version": 1,
+  "startNodeId": "start",
+  "nodes": [
+    { "id": "start", "type": "start", "name": "Start", "next": "validate-intake" },
+    { "id": "validate-intake", "type": "serviceTask", "name": "Validate intake", "next": "capacity-review" },
+    {
+      "id": "capacity-review",
+      "type": "decision",
+      "name": "Capacity review required?",
+      "branches": [
+        { "condition": "variables.capacityKw >= 50", "target": "technical-review" },
+        { "condition": "default", "target": "offer-preparation" }
+      ]
+    },
+    {
+      "id": "technical-review",
+      "type": "userTask",
+      "name": "Technical review",
+      "owner": "Grid Engineering",
+      "slaHours": 24,
+      "next": "offer-preparation"
+    },
+    {
+      "id": "offer-preparation",
+      "type": "userTask",
+      "name": "Offer preparation",
+      "owner": "Customer Operations",
+      "slaHours": 16,
+      "next": "complete"
+    },
+    { "id": "complete", "type": "end", "name": "Complete" }
+  ]
+}
+

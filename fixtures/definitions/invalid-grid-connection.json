@@ -1,0 +1,12 @@
+{
+  "key": "invalid-grid-connection",
+  "name": "Invalid Grid Connection",
+  "version": 1,
+  "startNodeId": "start",
+  "nodes": [
+    { "id": "start", "type": "start", "name": "Start", "next": "review" },
+    { "id": "review", "type": "userTask", "name": "Review", "next": "missing-end" },
+    { "id": "review", "type": "userTask", "name": "Duplicate Review", "owner": "Ops" }
+  ]
+}
+
