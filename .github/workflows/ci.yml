@@ -13,7 +13,5 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm install
-      - run: npm test
-      - run: npm run generate:samples
-
+      - run: npm ci
+      - run: npm run quality
