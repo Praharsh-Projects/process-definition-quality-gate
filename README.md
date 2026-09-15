@@ -23,9 +23,8 @@ The runtime part of process automation is only half the story. Real BPA work als
 
 ## Commands
 ```bash
-npm install
-npm test
-npm run generate:samples
+npm ci
+npm run quality
 ```
 
 ## CLI usage
@@ -40,8 +39,15 @@ tsx src/cli.ts generate-docs fixtures/definitions/grid-connection-request.json -
 - `reports/high-capacity-path.json`
 - `docs/generated/grid-connection-request.md`
 
+## Verification and evidence
+
+`npm run quality` compiles the TypeScript project, runs the deterministic test suite, regenerates the checked-in sample outputs, and applies a high-severity dependency audit. GitHub Actions runs the same frozen-install quality gate for pushes and pull requests.
+
+- Architecture: [`docs/architecture.md`](docs/architecture.md)
+- Test scope: [`docs/testing.md`](docs/testing.md)
+- Evidence boundaries: [`docs/limitations.md`](docs/limitations.md)
+
 ## Limitations
 - This repo uses JSON definitions rather than BPMN XML or Flowable models.
 - Decision simulation is intentionally narrow and based on example rules.
 - It is a portfolio quality gate, not a full enterprise deployment platform.
-
